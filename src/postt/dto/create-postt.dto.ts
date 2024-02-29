@@ -1,4 +1,7 @@
 export class CreatePosttDto {
   label: string;
-  // D'autre data
+  description: string;
+  completed: boolean;
+  authorId: number;
+  author: { connect: { id: number } };
 }
