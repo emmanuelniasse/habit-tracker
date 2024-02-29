@@ -9,30 +9,33 @@ import { HabitServiceInterface } from './habit.interface';
 export class HabitService implements HabitServiceInterface {
   constructor(private prisma: PrismaService) {}
 
-  async create(createHabitDto: CreateHabitDto) {
+  async createHabit(createHabitDto: CreateHabitDto) {
     return this.prisma.habit.create({
       data: createHabitDto as Prisma.HabitCreateInput,
     });
   }
 
-  async findAll(): Promise<Habit[]> {
+  async habits(): Promise<Habit[]> {
     return this.prisma.habit.findMany();
   }
 
-  async findOne(id: number): Promise<Habit> {
+  async habit(id: number): Promise<Habit> {
     return this.prisma.habit.findUnique({
       where: { id: id },
     });
   }
 
-  async update(id: number, udpdateHabitDto: UpdateHabitDto): Promise<Habit> {
+  async updateHabit(
+    id: number,
+    udpdateHabitDto: UpdateHabitDto,
+  ): Promise<Habit> {
     return this.prisma.habit.update({
       where: { id: id },
       data: udpdateHabitDto as Prisma.HabitUpdateInput,
     });
   }
 
-  async remove(id: number): Promise<Habit> {
+  async removeHabit(id: number): Promise<Habit> {
     return this.prisma.habit.delete({
       where: { id: id },
     });

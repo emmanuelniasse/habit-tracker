@@ -4,9 +4,10 @@ import { ConfigService } from '../config/config.service';
 import { PrismaService } from '../prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserServiceInterface } from './user.interface';
 
 @Injectable()
-export class UserService {
+export class UserService implements UserServiceInterface {
   constructor(
     private configService: ConfigService,
     private prisma: PrismaService,
