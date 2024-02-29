@@ -1,9 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from 'src/config/config.module';
 import { HabitService } from 'src/habit/habit.service';
+import { LoggerMiddleware } from '../common/middlewares/logger.middleware';
 import { PrismaService } from '../prisma.service';
 import { UserController } from './user.controller';
-import { LoggerMiddleware } from './user.middleware';
 import { UserService } from './user.service';
 
 @Module({
