@@ -1,10 +1,10 @@
 import { IsString, ValidateNested } from 'class-validator';
-import { CreatePosttDto } from 'src/postt/dto/create-postt.dto';
+import { CreateHabitDto } from 'src/habit/dto/create-habit.dto';
 
 export class UpdateUserDto {
   @IsString()
   name: string;
 
   @ValidateNested({ each: true })
-  posts?: CreatePosttDto[];
+  habits?: CreateHabitDto[];
 }

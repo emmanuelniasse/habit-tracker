@@ -1,8 +1,8 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { IsString } from 'class-validator';
-import { CreatePosttDto } from './create-postt.dto';
+import { CreateHabitDto } from './create-habit.dto';
 
-export class UpdatePosttDto extends PartialType(CreatePosttDto) {
+export class UpdateHabitDto extends PartialType(CreateHabitDto) {
   @IsString()
   label: string;
 }

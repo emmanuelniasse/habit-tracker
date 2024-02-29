@@ -1,6 +1,6 @@
 import { IsBoolean, IsNumber, IsString, Max, Min } from 'class-validator';
 
-export class CreatePosttDto {
+export class CreateHabitDto {
   @IsString()
   @Max(30)
   @Min(2)
