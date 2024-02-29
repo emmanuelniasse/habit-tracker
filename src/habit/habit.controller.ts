@@ -11,32 +11,32 @@ import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 import { HabitService } from './habit.service';
 
-@Controller('habit')
+@Controller('habits')
 export class HabitController {
   constructor(private readonly habitService: HabitService) {}
 
   @Post()
   create(@Body() createHabitDto: CreateHabitDto) {
-    return this.habitService.create(createHabitDto);
+    return this.habitService.createHabit(createHabitDto);
   }
 
   @Get()
   findAll() {
-    return this.habitService.findAll();
+    return this.habitService.habits();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.habitService.findOne(+id);
+    return this.habitService.habit(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHabitDto: UpdateHabitDto) {
-    return this.habitService.update(+id, updateHabitDto);
+    return this.habitService.updateHabit(+id, updateHabitDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.habitService.remove(+id);
+    return this.habitService.removeHabit(+id);
   }
 }
