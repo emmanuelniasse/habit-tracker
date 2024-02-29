@@ -1,0 +1,4 @@
+- La création de DTO se fait automatiquement avec de la commande : `nest g resource _nom_de_ma_resource_`
+- Pour edit une table sans perdre ses data :
+  - Générer une nouvelle `migration --read-only`
+  - Modifier la requête "à la main", supprimer la commande permettant de `create`/`read` et ajouter une requête `ALTER TABLE`

@@ -1,13 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from 'src/config/config.module';
-import { PostService } from 'src/post/post.service';
+import { PosttService } from 'src/postt/postt.service';
 import { PrismaService } from '../prisma.service';
 import { UserController } from './user.controller';
 import { LoggerMiddleware } from './user.middleware';
 import { UserService } from './user.service';
 
 @Module({
-  providers: [UserService, PrismaService, PostService],
+  providers: [UserService, PrismaService, PosttService],
   controllers: [UserController],
   exports: [UserService],
   imports: [
