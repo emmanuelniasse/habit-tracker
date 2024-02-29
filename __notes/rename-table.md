@@ -1,0 +1,4 @@
+- Générer une nouvelle migration `migration --read-only`
+- Y entrer `ALTER TABLE "ancien_nom" RENAME TO "nouveau_nom";`
+- Changer le nom du Schema
+  -> prisma migrate dev
