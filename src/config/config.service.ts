@@ -7,7 +7,7 @@ export class ConfigService {
   constructor(@Inject('CONFIG_OPTIONS') private options: { key: string }) {
     this.value = options.key;
   }
-  get(): string {
+  getOptionKey(): string {
     return this.value;
   }
 }

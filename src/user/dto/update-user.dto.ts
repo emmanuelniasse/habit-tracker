@@ -1,10 +1,7 @@
-import { IsEmail, IsString, ValidateNested } from 'class-validator';
+import { IsString, ValidateNested } from 'class-validator';
 import { CreatePosttDto } from 'src/postt/dto/create-postt.dto';
 
-export class CreateUserDto {
-  @IsEmail()
-  email: string;
-
+export class UpdateUserDto {
   @IsString()
   name: string;
 
