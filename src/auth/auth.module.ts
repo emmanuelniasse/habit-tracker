@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
       global: true,
       // secret: process.env.JWT_SECRET_PASSPHRASE,
       //TODOO : https://docs.nestjs.com/techniques/configuration
-      secret: process.env.JWT_SECRET_PASSPHRASE,
+      secret: 'avec-valeur-en-dur-ça-march',
       signOptions: { expiresIn: '60s' },
     }),
     UserModule,
