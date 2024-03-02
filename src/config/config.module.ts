@@ -5,10 +5,10 @@ import { ConfigService } from './config.service';
   providers: [ConfigService],
   exports: [ConfigService],
 })
-export class ConfigModule {
+export class DynamicConfigModule {
   static register(options: { key: string }): DynamicModule {
     return {
-      module: ConfigModule,
+      module: DynamicConfigModule,
       providers: [
         { provide: 'CONFIG_OPTIONS', useValue: options },
         ConfigService,

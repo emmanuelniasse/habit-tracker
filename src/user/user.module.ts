@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ConfigModule } from 'src/config/config.module';
+import { DynamicConfigModule } from 'src/config/config.module';
 import { HabitService } from 'src/habit/habit.service';
 import { LoggerMiddleware } from '../common/middlewares/logger.middleware';
 import { PrismaService } from '../prisma.service';
@@ -11,7 +11,7 @@ import { UserService } from './user.service';
   controllers: [UserController],
   exports: [UserService],
   imports: [
-    ConfigModule.register({
+    DynamicConfigModule.register({
       key: 'Valeur de `options`',
     }),
   ],
