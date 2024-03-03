@@ -8,10 +8,12 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // Permet de rendre la config globale, par exemple les variables d'environnement partout où le ConfigModule sera importé.
+    }),
     UserModule,
     HabitModule,
     AuthModule,
-    ConfigModule,
     DynamicConfigModule.register({ key: 'tst' }),
   ],
   controllers: [AppController],

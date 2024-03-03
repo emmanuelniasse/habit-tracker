@@ -23,8 +23,6 @@ export class AuthService {
     }
     const payload = { sub: user.email, username: user.name };
 
-    console.log(process.env.JWT_SECRET_PASSPHRASE);
-
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
