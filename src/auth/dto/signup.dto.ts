@@ -1,14 +1,15 @@
-import { CreateHabitDto } from 'src/habit/dto/create-habit.dto';
-
 import {
+  IsEmail,
   IsString,
   Matches,
   MaxLength,
   MinLength,
-  ValidateNested,
 } from 'class-validator';
 
-export class UpdateUserDto {
+export class RegisterDto {
+  @IsEmail()
+  email: string;
+
   @IsString()
   name: string;
 
@@ -22,7 +23,4 @@ export class UpdateUserDto {
     },
   )
   password: string;
-
-  @ValidateNested({ each: true })
-  habits?: CreateHabitDto[];
 }

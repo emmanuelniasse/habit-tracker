@@ -8,7 +8,7 @@ Les + du DTO :
         // src/user/user.controller.ts
 
         @Post('user')
-        async userSignup(
+        async userRegister(
             @Body() userData: { name?: string; email: string },
             ): Promise<UserModel> {
             return this.userService.createUser(userData);
