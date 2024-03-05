@@ -14,7 +14,7 @@ export class RegisterDto {
   name: string;
 
   @MinLength(8)
-  @MaxLength(20) // Exemple : longueur maximale de 20 caractères
+  @MaxLength(20)
   @Matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
     {
