@@ -16,22 +16,21 @@ export class AuthService implements AuthServiceInterface {
     private prisma: PrismaService,
   ) {}
 
-  async login(loginDto: LoginDto): Promise<{ access_token: string }> {
-    const { email, password } = loginDto;
+  async login(loginPayload: LoginDto): Promise<{ access_token: string }> {
+    const { email, password } = loginPayload;
 
-    // TODOO : func userExist()
+    // TODOO : func userExist(loginPayload)
     const user = await this.userService.user({ email: email });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    // TODOO : Si ça se trouve tu peux encore mieux  refacto en virant ça autre part
     const isPasswordValid = await passwordCompare(password, user.password);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { sub: user.email, username: user.name };
+    const payload = { sub: user.email, id: user.id, username: user.name };
 
     return {
       access_token: await this.jwtService.signAsync(payload),

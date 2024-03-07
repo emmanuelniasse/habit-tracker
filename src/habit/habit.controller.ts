@@ -3,17 +3,23 @@ import {
   Controller,
   Delete,
   Get,
+  Headers,
   Param,
   Patch,
   Post,
+  UnauthorizedException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 import { HabitService } from './habit.service';
 
 @Controller('habits')
 export class HabitController {
-  constructor(private readonly habitService: HabitService) {}
+  constructor(
+    private readonly habitService: HabitService,
+    private jwtService: JwtService,
+  ) {}
 
   @Post()
   create(@Body() createHabitDto: CreateHabitDto) {
@@ -21,8 +27,19 @@ export class HabitController {
   }
 
   @Get()
-  findAll() {
-    return this.habitService.habits();
+  findAll(@Headers('authorization') authorizationHeader: string) {
+    if (!authorizationHeader) {
+      throw new UnauthorizedException('Authorization header is missing');
+    }
+
+    const token = authorizationHeader.replace('Bearer ', '');
+
+    try {
+      const decodedToken = this.jwtService.verify(token);
+      return this.habitService.habits(decodedToken.id);
+    } catch (error) {
+      throw new UnauthorizedException('Invalid token');
+    }
   }
 
   @Get(':id')

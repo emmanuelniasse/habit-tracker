@@ -12,7 +12,8 @@ import { AuthService } from './auth.service';
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET_PASSPHRASE,
-      signOptions: { expiresIn: '60s' },
+      // secret: jwtConstants.secret,
+      signOptions: { expiresIn: '600000s' },
     }),
     UserModule,
   ],

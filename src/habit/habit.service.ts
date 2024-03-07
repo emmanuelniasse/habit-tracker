@@ -15,8 +15,10 @@ export class HabitService implements HabitServiceInterface {
     });
   }
 
-  async habits(): Promise<Habit[]> {
-    return this.prisma.habit.findMany();
+  async habits(id: number): Promise<Habit[]> {
+    return this.prisma.habit.findMany({
+      where: { authorId: id },
+    });
   }
 
   async habit(id: number): Promise<Habit> {
