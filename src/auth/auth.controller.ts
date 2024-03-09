@@ -15,9 +15,6 @@ export class AuthController {
   // TODOO: à voir / Si je met ça, le code sera automatiquement 200, mais si j'ai une erreur dans le service, je ne pourrais pas la gérer si j'ai bien compris.
   @Post('login')
   signIn(@Body() userLoginDto: LoginDto) {
-    console.log(this.configService.get<string>('JWT_SECRET_PASSPHRASE'));
-    // console.log('Valeur jwtConstants : ' + jwtConstants.secret);
-
     return this.authService.login(userLoginDto);
   }
 
