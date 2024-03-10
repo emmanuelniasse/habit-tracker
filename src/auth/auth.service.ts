@@ -3,9 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from '../prisma.service';
 import { UserService } from '../user/user.service';
-import { passwordCompare, passwordHash } from '../utilities/password.utility';
+import { passwordHash } from '../utilities/password.utility';
 import { AuthServiceInterface } from './auth.interface';
-import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/signup.dto';
 
 @Injectable()
@@ -16,16 +15,42 @@ export class AuthService implements AuthServiceInterface {
     private prisma: PrismaService,
   ) {}
 
-  async login(loginPayload: LoginDto): Promise<{ access_token: string }> {
-    const { email, password } = loginPayload;
-
-    // TODOO : func userExist(loginPayload)
-    const user = await this.userService.user({ email: email });
+  // async validateUser(loginPayload: LoginDto): Promise<any> {
+  // const { email, password } = loginPayload;
+  // console.log(loginPayload);
+  async validateUser(username: string, password: string): Promise<any> {
+    const user = await this.userService.user({ email: username });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const isPasswordValid = await passwordCompare(password, user.password);
+    // const isPasswordValid = await passwordCompare(password, user.password);
+    // if (!isPasswordValid) {
+    //   throw new UnauthorizedException('Invalid credentials');
+    // }
+    // const { password: userPassword, ...result } = user;
+    // return result;
+    return user;
+  }
+
+  // async login(loginPayload: LoginDto): Promise<{ access_token: string }> {
+  //   const { email, password } = loginPayload;
+  async login(
+    email: string,
+    password: string,
+  ): Promise<{ access_token: string }> {
+    // TODOO : func userExist(loginPayload)
+
+    const user = await this.userService.user({ email: email });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    // const isPasswordValid = await passwordCompare(password, user.password);
+    const isPasswordValid = password === user.password ? true : false;
+    console.log(isPasswordValid);
+
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
