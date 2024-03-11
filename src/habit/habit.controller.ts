@@ -8,12 +8,15 @@ import {
   Patch,
   Post,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 import { HabitService } from './habit.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('habits')
 export class HabitController {
   constructor(

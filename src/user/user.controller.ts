@@ -1,9 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Patch } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  UseGuards,
+} from '@nestjs/common';
 import { User as UserModel } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
 @Controller('users')
+@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -25,8 +35,10 @@ export class UserController {
     try {
       const updatedUser = await this.userService.updateUser(+id, userUpdated);
       return updatedUser;
-    } catch (error) {
-      throw new Error(error);
+    } catch (error: unknown) {
+      throw new Error(
+        error instanceof Error ? error.message : 'An error occured',
+      );
     }
   }
 

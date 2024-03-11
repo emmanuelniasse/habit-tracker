@@ -6,22 +6,23 @@ import { PrismaService } from '../prisma.service';
 import { UserModule } from '../user/user.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    UserModule,
+    PassportModule,
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET_PASSPHRASE,
-      signOptions: { expiresIn: '6000s' },
+      signOptions: { expiresIn: '60s' },
     }),
-    UserModule,
-    PassportModule,
   ],
 
   controllers: [AuthController],
-  providers: [AuthService, PrismaService, LocalStrategy],
+  providers: [AuthService, PrismaService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
