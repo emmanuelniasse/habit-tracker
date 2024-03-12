@@ -1,14 +1,21 @@
-import { IsBoolean, IsNumber, IsString, Max, Min } from 'class-validator';
+import {
+  IsBoolean,
+  IsNumber,
+  IsString,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 
 export class CreateHabitDto {
   @IsString()
-  @Max(30)
-  @Min(2)
+  @MinLength(2)
+  @MaxLength(30)
   label: string;
 
   @IsString()
-  @Max(200)
-  @Min(2)
+  @MinLength(2)
+  @MaxLength(200)
   description?: string;
 
   @IsBoolean()

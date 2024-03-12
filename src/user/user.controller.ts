@@ -22,10 +22,10 @@ export class UserController {
     return this.userService.users();
   }
 
-  // @Get(':id')
-  // async getUserById(@Param('id') id: string): Promise<UserModel> {
-  //   return this.userService.user({ id: +id });
-  // }
+  @Get(':id')
+  async getUserById(@Param('id') id: string): Promise<UserModel> {
+    return this.userService.user({ id: +id });
+  }
 
   @Patch(':id')
   async updateUser(
