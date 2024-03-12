@@ -34,9 +34,9 @@ $ npm run dev
 
 ### Auth
 
-- POST /auth/register
-  Description : Signup
-  Authentification required : No
+- POST /auth/register  
+  Description : Signup  
+  Authentification required : No  
   Request body :
 
   - email
@@ -44,9 +44,9 @@ $ npm run dev
   - name
     Response : User detail (id, email, password, name)
 
-- POST /auth/login
-  Description : Login
-  Authentification required : No
+- POST /auth/login  
+  Description : Login  
+  Authentification required : No  
   Request body :
   - email
   - password
@@ -54,58 +54,58 @@ $ npm run dev
 
 ### Users
 
-- GET /users
-  Description : Get all users
-  Authentification required : Yes
-  Parameters : No
+- GET /users  
+  Description : Get all users  
+  Authentification required : Yes  
+  Parameters : No  
   Response : Users list with details (id, email, password, name)
 
 - GET /users/:id
-  Description : Get a user
-  Authentification required : Yes
-  Parameters : - id
+  Description : Get a user  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : User details (id, email, password, name)
 
-- PATCH /users/:id
-  Description : Update a user
-  Authentification required : Yes
-  Parameters : - id
+- PATCH /users/:id  
+  Description : Update a user  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : User updated
 
-- DELETE /users/:id
-  Description : Delete a user
-  Authentification required : Yes
-  Parameters : - id
+- DELETE /users/:id  
+  Description : Delete a user  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : void
 
 ### Habits
 
-- POST /habits
-  Description : Create a user habit
-  Authentification required : Yes
-  Request body : - id - label - description - completed - authorId
+- POST /habits  
+  Description : Create a user habit  
+  Authentification required : Yes  
+  Request body : - id - label - description - completed - authorId  
   Response : Created habit detail
 
-- GET /habits
-  Description : Get the user's habits list
-  Authentification required : Yes
-  Parameters : No
+- GET /habits  
+  Description : Get the user's habits list  
+  Authentification required : Yes  
+  Parameters : No  
   Response : Habits list with details (id, label, description, completed, authorId)
 
-- GET /habits/:id
-  Description : Get a user habit
-  Authentification required : Yes
-  Parameters : - id
+- GET /habits/:id  
+  Description : Get a user habit  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : Habit details (id, label, description, completed, authorId)
 
-- PATCH /habits/:id
-  Description : Update a user habit
-  Authentification required : Yes
-  Parameters : - id
+- PATCH /habits/:id  
+  Description : Update a user habit  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : User habit updated
 
-- DELETE /habits/:id
-  Description : Delete a user habit
-  Authentification required : Yes
-  Parameters : - id
+- DELETE /habits/:id  
+  Description : Delete a user habit  
+  Authentification required : Yes  
+  Parameters : - id  
   Response : void
