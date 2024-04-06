@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsBoolean,
   IsNumber,
@@ -8,16 +9,28 @@ import {
 } from 'class-validator';
 
 export class CreateHabitDto {
+  @ApiProperty({
+    example: 'Meditation',
+    required: true,
+  })
   @IsString()
   @MinLength(2)
   @MaxLength(30)
   label: string;
 
+  @ApiProperty({
+    example: 'A daily practice of mindfulness and relaxation.',
+    required: false,
+  })
   @IsString()
   @MinLength(2)
   @MaxLength(200)
   description?: string;
 
+  @ApiProperty({
+    example: false,
+    required: false,
+  })
   @IsBoolean()
   completed: boolean;
 

@@ -1,9 +1,8 @@
 import { User } from '@prisma/client';
 import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/signup.dto';
+import { RegisterDto } from './dto/register.dto';
 
 export interface AuthServiceInterface {
-  // login(loginDto: LoginDto): Promise<{ access_token: string }>;
   login(
     email: LoginDto['email'],
     password: LoginDto['password'],

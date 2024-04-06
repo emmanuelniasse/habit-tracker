@@ -1,8 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { CreateHabitDto } from 'src/habit/dto/create-habit.dto';
 
 import { IsString, ValidateNested } from 'class-validator';
 
 export class UpdateUserDto {
+  @ApiProperty({
+    example: 'John',
+    required: true,
+  })
   @IsString()
   name: string;
 

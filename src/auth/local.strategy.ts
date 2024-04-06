@@ -13,10 +13,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  // TODOO URGENT : ICI JE VEUX PASSER UN DTO, PAR DEFAUT "validate" PREND 2 ARGUMENTS ON DIRAIT : username, password. ........
-  // async validate(loginPayload: LoginDto): Promise<any> {
-  // console.log(loginPayload);
-  // const user = await this.authService.validateUser(loginPayload);
+  // TODO : I want a DTO but "validate" func takes 2 args : username, password.
   async validate(
     email: LoginDto['email'],
     password: LoginDto['password'],

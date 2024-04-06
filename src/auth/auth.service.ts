@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
 import { passwordCompare, passwordHash } from '../utilities/password.utility';
 import { AuthServiceInterface } from './auth.interface';
 import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/signup.dto';
+import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService implements AuthServiceInterface {
@@ -16,9 +16,6 @@ export class AuthService implements AuthServiceInterface {
     private prisma: PrismaService,
   ) {}
 
-  // async validateUser(loginPayload: LoginDto): Promise<any> {
-  // const { email, password } = loginPayload;
-  // console.log(loginPayload);
   async validateUser(loginDto: LoginDto): Promise<any> {
     const user = await this.userService.user({ email: loginDto.email });
 
@@ -37,11 +34,8 @@ export class AuthService implements AuthServiceInterface {
     const { password: userPassword, ...result } = user;
 
     return result;
-    // return user;
   }
 
-  // async login(loginPayload: LoginDto): Promise<{ access_token: string }> {
-  //   const { email, password } = loginPayload;
   async login(user: any): Promise<{ access_token: string }> {
     const payload = { sub: user.email, id: user.id };
 
@@ -51,7 +45,6 @@ export class AuthService implements AuthServiceInterface {
   }
 
   async register(userRegisterData: RegisterDto): Promise<User> {
-    // TODOO : externaliser pour plus de lisibilité
     const initialPassword = userRegisterData.password;
     const hashedPassword = await passwordHash(initialPassword);
     userRegisterData.password = hashedPassword;

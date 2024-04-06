@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,14 +8,18 @@ import {
 } from 'class-validator';
 
 export class LoginDto {
-  // TODOO : Pour que ces décorateurs soient pris en compte, nous avons besoin d'importer et d'utiliser la function 'validate' de class-validator
-  // import { validate } from 'class-validator';
-  // Et créer un middleware
-
+  @ApiProperty({
+    example: 'example@gmail.com',
+    required: true,
+  })
   @IsEmail()
   @IsNotEmpty()
   email: string;
 
+  @ApiProperty({
+    example: 'MyP@$$sw0rd',
+    required: true,
+  })
   @MinLength(8)
   @MaxLength(20)
   @Matches(

@@ -35,7 +35,7 @@ export class UserService implements UserServiceInterface {
     });
   }
 
-  // TODOO : Virer d'ici mais en attendant laisse
+  // TODO : Move it in another file
   getConfigOptionKey() {
     const value = this.configService.getOptionKey();
     return `Hello ${value}`;

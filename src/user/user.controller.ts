@@ -47,7 +47,7 @@ export class UserController {
     return this.userService.deleteUser({ id: +id });
   }
 
-  // TODOO : Virer d'ici mais en attendant laisse
+  // TODO : Move it in another file
   @Get('option-key')
   getConfigOptionKey(): string {
     return this.userService.getConfigOptionKey();
