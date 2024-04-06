@@ -8,10 +8,12 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { ApiTags } from '@nestjs/swagger';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 
+@ApiTags('users')
 @Controller('auth')
 export class AuthController {
   constructor(

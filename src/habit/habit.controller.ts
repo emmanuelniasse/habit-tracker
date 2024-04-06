@@ -11,11 +11,14 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 import { HabitService } from './habit.service';
 
+@ApiTags('habits')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('habits')
 export class HabitController {

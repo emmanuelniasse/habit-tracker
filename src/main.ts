@@ -8,6 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Habit tracker')
     .setDescription('This is an API available for an Habit Tracker')
     .setVersion('1.0')
