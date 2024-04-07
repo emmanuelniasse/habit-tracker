@@ -13,7 +13,7 @@ import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 
-@ApiTags('users')
+@ApiTags('authentication')
 @Controller('auth')
 export class AuthController {
   constructor(
