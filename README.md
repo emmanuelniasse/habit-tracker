@@ -30,7 +30,7 @@ $ npm run dev
 
 ```
 
-## API is now available on [localhost:3001:](http://localhost:3001/api/)
+## API is now available on [http://localhost:3001/api](http://localhost:3001/api/)
 
 ## Routes
 
